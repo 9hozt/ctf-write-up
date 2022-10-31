@@ -45,5 +45,3 @@ $ tshark -2 -r trace.pcap -R "ip.dst == 10.13.32.3" -T fields -e tcp.payload
 2000000000000000
 5f558867993dccc99879f7ca39c5e406972f84a3a9dd5d48972421ff375cb18c
 ```
-
-HTB{vryS3CuR3_F1L3_TR4nsf3r}
