@@ -94,9 +94,30 @@ public class ExecHelper implements Serializable {
 }
 ```
 
+## Find the vuln
+
+This seems to be some deserialize vulnerability. Having a look at SerializationUtils class. After reading some documentation, deserialize trigger the readObject method of the input objet, and remember the readObejct implementation in ExecHelper class:
+
+```java
+    private final void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        run();
+    }
+```
+
+The run method has the following line of code:
+
+```java
+        java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(command).getInputStream()).useDelimiter("\\A");
+```
+
+So if we can deserialize a well built ExecHelper object, we can execute commands :D
+
+Luckily for us, no verification is done on the object, so we can input any serialized object in the CSRF param and let the magic happen :)
+
+
 ## Exploit the backdoor :D
 
-This exec helper is very nice and will allow us to execute some commands on the server :)
 
 The ExecHelper constructor is wating for an array of Base64Helper object. So we can craft objects then fill an array and call the ExecHelper constructor. Once this done,
 we can serialize the class and send it as base64 in the CSRF parameter at login time :)
