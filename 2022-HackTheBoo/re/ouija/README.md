@@ -9,17 +9,17 @@ ouija: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically link
 
 At runtime, it seems to be a full sleep(3) binary computing the flag...
 
-![run](./img/run.png)
+![run](2022-HackTheBoo/re/ouija/img/run.png)
 
 Let's inspect it with Binary Ninja :)
 
 We can quickly identify some patterns similar to this one: 
 
-![patttern](./img/pattern.png)
+![patttern](pattern.png)
 
 After a lot of this pattern instructions, we can see a printf of one flag character: 
 
-![flag_char](./img/printflag.png)
+![flag_char](printflag.png)
 
 To sum up, the binary just does some long sleeps, then compute a key to "decrypt" the flag. At this time, several way to solve this chall came in mind: 
 
@@ -32,10 +32,10 @@ I always wanted to learn how to write Binary Ninja Plugin so ... I wrote one to 
 Say hi to [Nopify](https://github.com/9hozt/nopify)
 
 So using this plugin, i'm able to "patch as NOP" some chossen symbols. As the binary use the printf(3) function to prinf the flag character, I just patched all other 'print' functions, as well as sleep calls of course.
-![nopify](./img/nopify.png)
+![nopify](nopify.png)
 
-![before](./img/before.png)
-![after](./img/after.png)
+![before](before.png)
+![after](after.png)
 
 Running the patched binary with some bash magic gives the flag: 
 

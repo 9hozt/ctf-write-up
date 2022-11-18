@@ -25,18 +25,18 @@ $ tshark -r trace.pcap
 
 Let's move to the interresting part :)
 
-![Binary main](./img/main.png)
+![Binary main](2022-HackTheBoo/re/securetransfer/img/main.png)
 
 We can see some crypto coming..
 
 We quickly identify the decrypt routine, AES256 CBC is used, containg the IV and the key. The key is "scrambled" : 
 
-![IV](./img/iv.png)
-![Scrambled key](./img/scramble.png)
+![IV](iv.png)
+![Scrambled key](scramble.png)
 
 We can recompose the key using some python magic: 
 
-![Recovering key](./img/recover.png)
+![Recovering key](recover.png)
 
 Now we just have to extract data from the pcap and decrypt it :)
 
