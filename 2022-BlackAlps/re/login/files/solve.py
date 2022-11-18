@@ -14,7 +14,7 @@ while(1):
     p.recvuntil("OTP")
     p.sendline("2")
     p.recvuntil(b"OTP: \n")
-    p.sendline("318")
+    p.sendline("874")
     resp = p.recv()
     if b"Invalid" in resp:
         pass
