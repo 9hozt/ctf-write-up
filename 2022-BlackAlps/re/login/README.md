@@ -43,7 +43,9 @@ In fact any password is valid :D but it could take a lot of time to execute ^^
 
 The for loop iterate over input characters and to some operation with const data. This operation restults as int32 and is used as arg for sleep(3).
 Let's have a look at the const data: 
-![const_data](const_data.png)
+
+![const_data](./img/const_data.png)
+
 
 So it will take each 4bytes of this const, and add it to our input char * 0x64, and then cast it as a signed int. This sounds good :D we can now calculate each password char to get 0 (thanks to the cast) as result and avoid each sleep in the loop. 
 
