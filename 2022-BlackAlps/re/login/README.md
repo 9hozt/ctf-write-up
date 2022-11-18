@@ -9,7 +9,8 @@ $ file login
 login: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=4abb8e2e1f0dfd82e4b0e6d129e6f257eb5d8228, for GNU/Linux 4.4.0, stripped
 ```
 
-![[./img/run.png]]
+![run](./img/run.png)
+
 
 The programm is asking for login and password, and it seems to ask for OTP after valid authentication. 
 Let's open it in Binary Ninja
