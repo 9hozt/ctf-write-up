@@ -57,8 +57,8 @@ So it will take each 4bytes of this const, and add it to our input char * 0x64, 
 ```
 
 Running the binary with good username and password gets us to the OTP input: 
-![otp1](./img/otp1.png)
 
+![otp1](./img/otp1.png)
 Let's reverse the OTP generation
 
 ### OTP
@@ -78,7 +78,7 @@ srand(time(nullptr));
 At this time, we have 3 ways to solve :D
 - Recode all the OTP generation at run and send it (so long)
 - Pure bruteforce the OTP (send the same until a wild flag appears)
-	- Generate an OTP in the future (That's a great idea Marty!!)
+- Generate an OTP in the future (That's a great idea Marty!!)
 
 I used the 3rd method. I used the LD_PRELOAD trick to make time(3) return a timestamp five minutes in the future, then run the script and wait for the flag:
 
