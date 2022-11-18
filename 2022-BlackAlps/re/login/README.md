@@ -9,7 +9,7 @@ $ file login
 login: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=4abb8e2e1f0dfd82e4b0e6d129e6f257eb5d8228, for GNU/Linux 4.4.0, stripped
 ```
 
-![[2022-BlackAlps/re/login/img/run.png]]
+![[./img/run.png]]
 
 The programm is asking for login and password, and it seems to ask for OTP after valid authentication. 
 Let's open it in Binary Ninja
@@ -19,9 +19,9 @@ Let's open it in Binary Ninja
 Okay so it's a C++ binary, luckily for us, Binary Ninja is pretty cool with C++ :)
 ### Login and Password
 We can identify the "check_creds" routine: 
-![[check_creds.png]]
+![[./img/check_creds.png]]
 Username is ..... admin ^^
-![[username.png]]
+![[./img/username.png]]
 The password check is fun :D
 ```C
 if (password_len != 43)
@@ -55,16 +55,16 @@ So it will take each 4bytes of this const, and add it to our input char * 0x64, 
 ```
 
 Running the binary with good username and password gets us to the OTP input: 
-![[otp1.png]]
+![[./img/otp1.png]]
 Let's reverse the OTP generation
 
 ### OTP
 It seems to be generated using rand(), then some dark magic math:
-![[otp2.png]]
+![[./img/otp2.png]]
 Then, the check function is called with username as arg:
-![[otp3.png]]
+![[./img/otp3.png]]
 There is also some dark magic in this function: 
-![[otp4.png]]
+![[./img/otp4.png]]
 We also notice that the rand is init with a predictible seed in main:
 ```C
 srand(time(nullptr));
@@ -97,7 +97,7 @@ time_t time( time_t * pTime ){
 
 Then run the login binary locally and grep the generated OTP using ltrace.
 
-![[otp5.png]]
+![[./img/otp5.png]]
 
 And here is the script to run&wait:
 ```python
