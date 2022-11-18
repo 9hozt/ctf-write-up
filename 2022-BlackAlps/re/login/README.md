@@ -96,7 +96,9 @@ time_t time( time_t * pTime ){
 ```
 
 Then run the login binary locally and grep the generated OTP using ltrace.
+
 ![[otp5.png]]
+
 And here is the script to run&wait:
 ```python
 from pwn import * 
