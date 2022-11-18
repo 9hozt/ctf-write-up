@@ -20,9 +20,9 @@ Let's open it in Binary Ninja
 Okay so it's a C++ binary, luckily for us, Binary Ninja is pretty cool with C++ :)
 ### Login and Password
 We can identify the "check_creds" routine: 
-![[./img/check_creds.png]]
+![check_creds](./img/check_creds.png)
 Username is ..... admin ^^
-![[./img/username.png]]
+![username](./img/username.png)
 The password check is fun :D
 ```C
 if (password_len != 43)
@@ -43,7 +43,8 @@ In fact any password is valid :D but it could take a lot of time to execute ^^
 
 The for loop iterate over input characters and to some operation with const data. This operation restults as int32 and is used as arg for sleep(3).
 Let's have a look at the const data: 
-![[const_data.png]]
+![const_data](const_data.png)
+
 So it will take each 4bytes of this const, and add it to our input char * 0x64, and then cast it as a signed int. This sounds good :D we can now calculate each password char to get 0 (thanks to the cast) as result and avoid each sleep in the loop. 
 
 ```python
@@ -56,16 +57,19 @@ So it will take each 4bytes of this const, and add it to our input char * 0x64, 
 ```
 
 Running the binary with good username and password gets us to the OTP input: 
-![[./img/otp1.png]]
+![otp1](./img/otp1.png)
+
 Let's reverse the OTP generation
 
 ### OTP
 It seems to be generated using rand(), then some dark magic math:
-![[./img/otp2.png]]
+![otp2](./img/otp2.png)
+
 Then, the check function is called with username as arg:
-![[./img/otp3.png]]
+![otp3](./img/otp3.png)
 There is also some dark magic in this function: 
-![[./img/otp4.png]]
+![otp4](./img/otp4.png)
+
 We also notice that the rand is init with a predictible seed in main:
 ```C
 srand(time(nullptr));
@@ -98,7 +102,7 @@ time_t time( time_t * pTime ){
 
 Then run the login binary locally and grep the generated OTP using ltrace.
 
-![[./img/otp5.png]]
+![otp5](./img/otp5.png)
 
 And here is the script to run&wait:
 ```python
