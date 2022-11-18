@@ -59,6 +59,7 @@ So it will take each 4bytes of this const, and add it to our input char * 0x64, 
 Running the binary with good username and password gets us to the OTP input: 
 
 ![otp1](./img/otp1.png)
+
 Let's reverse the OTP generation
 
 ### OTP
