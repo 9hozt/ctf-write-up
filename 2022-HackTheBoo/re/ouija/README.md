@@ -29,7 +29,7 @@ To sum up, the binary just does some long sleeps, then compute a key to "decrypt
 
 I always wanted to learn how to write Binary Ninja Plugin so ... I wrote one to patch as NOP choosen symbols ^^
 
-Say hello to [Nopify](https://github.com/9hozt/nopify) Repo is temporarily not available
+Say hello to [Nopify](https://github.com/9hozt/nopify) 
 
 So using this plugin, i'm able to "patch as NOP" some chossen symbols. As the binary use the printf(3) function to prinf the flag character, I just patched all other 'print' functions, as well as sleep calls of course.
 ![nopify](./img/nopify.png)
