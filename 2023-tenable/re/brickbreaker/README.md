@@ -104,4 +104,8 @@ At this points, two possibilities comes to me:
  
  ![flag](./img/flag.png)
  
+ Created images are in ```flag img``` directory
+
+ ```
  flag{Br3Ak0U7!!1}
+ ```
