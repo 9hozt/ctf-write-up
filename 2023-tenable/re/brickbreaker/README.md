@@ -104,8 +104,9 @@ At this points, two possibilities comes to me:
  
  ![flag](./img/flag.png)
  
- Created images are in ```flag img``` directory
+ Created images are in ```flag_img``` directory
 
  ```
  flag{Br3Ak0U7!!1}
  ```
+ Cannot validate the flag since I solved it after the CTF end :D
