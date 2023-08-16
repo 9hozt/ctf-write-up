@@ -76,12 +76,12 @@ At this points, two possibilities comes to me:
  >>> fullpos=[]
  >>> for f_addr in func_list:
  ... 	pos = []
- ... 	calls = bv.get_function_at(f_addr).call_sites
+ ... 	calls = bv.get_function_at(f_addr).call_sites     # This get all functions called in the targeted function
  ... 	for i in calls:
- ... 		if i.llil.operands[0].value.value == 0x2001a90:
- ... 			if i.hlil.operands[1][0].value.value == 3:
- ... 				x = i.hlil.operands[1][3].value.value
- ... 				y = i.hlil.operands[1][4].value.value
+ ... 		if i.llil.operands[0].value.value == 0x2001a90:  # if called func address is 0x2001a90 (loadSprite)
+ ... 			if i.hlil.operands[1][0].value.value == 3:      # 3 is brickSprite
+ ... 				x = i.hlil.operands[1][3].value.value          # X coordinate
+ ... 				y = i.hlil.operands[1][4].value.value          # Y coordinate
  ... 				pos.append([x,y])
  ... 	fullpos.append(pos)
  >>> len(fullpos)
