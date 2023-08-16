@@ -1,5 +1,7 @@
 # Braggart
 
+![chall](./img/chall.png)
+
 For this challenge, a binary and an URL were provided:
 
 ![web](./img/web.png)

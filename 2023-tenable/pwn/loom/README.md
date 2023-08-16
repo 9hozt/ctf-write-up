@@ -1,5 +1,7 @@
 # Loom
 
+![chall](./img/chall.png)
+
 Challenge consits in a remote pwnable, binary is provided:
 
 ```bash
