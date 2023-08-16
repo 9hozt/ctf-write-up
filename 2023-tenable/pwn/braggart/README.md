@@ -73,6 +73,7 @@ continue
 res = r.text.split("User Agent : </h3>")[1].split("</pre>")[0]
 print(res)
 ```
+(script has been improoved later :D)
 The password is obtained by leaking environnement variables:
 
 ![leak](./img/leak.png)
