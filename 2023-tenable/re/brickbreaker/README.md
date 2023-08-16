@@ -29,7 +29,6 @@ According to this, we are able to retrieve the armv9 entrypoint and base image o
 ![offset](./img/offset.png)
 
 Using my favorite disassembler [Binary Ninja](https://binary.ninja/) the rom can be properlly mapped to the extracted address and offset.
-The only probleme is that Binary Ninja does not support armv9 instructions set (yet? :D) so I will work with armv7 which is quite close to armv9.
 
 ![binja](./img/binja.png)
 
