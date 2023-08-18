@@ -22,7 +22,7 @@ Let reverse this to confirm or deny these toughts. I never reversed this file fo
 
 ## Reversing and debugging to madness
 
-This [great documentation was](https://www.chibialiens.com/arm/nds.php) was used.
+This [great documentation](https://www.chibialiens.com/arm/nds.php) was used.
 
 According to this, we are able to retrieve the armv9 entrypoint and base image offset address:
 
